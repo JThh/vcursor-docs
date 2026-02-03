@@ -66,11 +66,11 @@ export default function CliDocs() {
 
                 <div className="space-y-8">
                     {/* Core & Workflow */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-4 text-[hsl(var(--foreground))] border-b border-[hsl(var(--border))] pb-2">
+                    <div className="command-category">
+                        <h3 className="command-category-title">
                             Core & Workflow
                         </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="command-grid">
                             <CommandCard
                                 flag="--agent"
                                 desc="Use autonomous agent mode for complex tasks like video editing."
@@ -110,11 +110,11 @@ export default function CliDocs() {
                     </div>
 
                     {/* Video Settings */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-4 text-[hsl(var(--foreground))] border-b border-[hsl(var(--border))] pb-2">
+                    <div className="command-category">
+                        <h3 className="command-category-title">
                             Video Settings
                         </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="command-grid">
                             <CommandCard
                                 flag="--duration"
                                 desc="Target duration for the video."
@@ -139,11 +139,11 @@ export default function CliDocs() {
                     </div>
 
                     {/* Audio & Style */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-4 text-[hsl(var(--foreground))] border-b border-[hsl(var(--border))] pb-2">
+                    <div className="command-category">
+                        <h3 className="command-category-title">
                             Audio & Style
                         </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="command-grid">
                             <CommandCard
                                 flag="--voiceover"
                                 desc="Add AI voiceover text."
@@ -179,16 +179,16 @@ export default function CliDocs() {
 
 function CommandCard({ flag, desc, example }: { flag: string, desc: string, example: string }) {
     return (
-        <div className="p-4 rounded-lg bg-[hsl(var(--card))] border border-[hsl(var(--border))] hover:border-[hsl(var(--primary))] transition-colors duration-200">
-            <code className="text-sm font-bold text-[hsl(var(--primary))] bg-[hsla(var(--primary),0.1)] px-2 py-1 rounded">
+        <div className="command-card">
+            <code className="command-flag">
                 {flag}
             </code>
-            <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))] leading-relaxed">
+            <p className="command-desc">
                 {desc}
             </p>
-            <div className="mt-3 pt-3 border-t border-[hsla(var(--border),0.5)]">
-                <span className="text-xs text-[hsl(var(--muted-foreground))] uppercase tracking-wider font-semibold">Ex:</span>
-                <code className="ml-2 text-xs text-[hsl(var(--foreground))] font-mono opacity-80">
+            <div className="command-example-box">
+                <span className="command-example-label">Ex:</span>
+                <code className="command-example-code">
                     {example}
                 </code>
             </div>
