@@ -36,7 +36,7 @@ export const CodeBlock = ({ language, code, filename }: CodeBlockProps) => {
                 </div>
                 <button
                     onClick={copyToClipboard}
-                    className="text-xs font-medium text-[#c9d1d9] hover:text-white bg-[#21262d] hover:bg-[#30363d] transition-colors px-2 py-1 rounded border border-[#30363d] flex items-center gap-1.5 opacity-0 group-hover:opacity-100 focus:opacity-100"
+                    className="text-xs transition-all duration-200 px-2 py-1.5 rounded-md flex items-center gap-1.5 text-[#8b949e] hover:text-white hover:bg-[#30363d]"
                     aria-label="Copy code to clipboard"
                 >
                     {isCopied ? (
@@ -54,7 +54,7 @@ export const CodeBlock = ({ language, code, filename }: CodeBlockProps) => {
                             >
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Copied!
+                            <span className="text-green-500 font-medium">Copied</span>
                         </>
                     ) : (
                         <>
@@ -76,7 +76,7 @@ export const CodeBlock = ({ language, code, filename }: CodeBlockProps) => {
                     )}
                 </button>
             </div>
-            <div className="code-content relative">
+            <div className="code-content relative group-hover:bg-[#0d1117] transition-colors">
                 <Highlight
                     theme={themes.vsDark}
                     code={code.trim()}
@@ -84,14 +84,11 @@ export const CodeBlock = ({ language, code, filename }: CodeBlockProps) => {
                 >
                     {({ className, style, tokens, getLineProps, getTokenProps }) => (
                         <pre
-                            className={`${className} overflow-x-auto p-4 text-sm font-mono leading-relaxed`}
+                            className={`${className} overflow-x-auto p-4 text-sm font-mono leading-relaxed scrollbar-thin scrollbar-thumb-[#30363d] scrollbar-track-transparent`}
                             style={{ ...style, backgroundColor: "transparent", margin: 0 }}
                         >
                             {tokens.map((line, i) => (
                                 <div key={i} {...getLineProps({ line, key: i })}>
-                                    <span className="inline-block w-8 select-none text-[#484f58] text-right pr-4 text-xs opacity-50">
-                                        {i + 1}
-                                    </span>
                                     {line.map((token, key) => (
                                         <span key={key} {...getTokenProps({ token, key })} />
                                     ))}
