@@ -133,6 +133,29 @@ a {
   letter-spacing: -0.02em;
 }
 
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  line-height: 1;
+}
+
+.brand-logo {
+  display: block;
+}
+
+.brand-logo--square {
+  border-radius: 0.5rem;
+}
+
+.brand-logo--round {
+  border-radius: 999px;
+}
+
+.footer-brand-mark {
+  margin-bottom: 0.5rem;
+}
+
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -549,8 +572,9 @@ a {
 
 .brand-name {
   font-weight: 700;
-  margin-bottom: 0.25rem;
-  display: block;
+  margin-bottom: 0;
+  display: inline-block;
+  line-height: 1;
 }
 
 .footer p {

@@ -45,13 +45,13 @@ export default function Header() {
     return (
         <header className={`navbar ${scrolled ? 'glass shadow-sm' : 'bg-transparent'}`}>
             <div className="container navbar-content">
-                <Link href="/" className="logo text-gradient flex items-center gap-2">
+                <Link href="/" className="logo text-gradient brand-mark">
                     <Image
                         src="/logo-submit-anything.png"
                         alt="VCursor Logo"
                         width={32}
                         height={32}
-                        className="rounded-lg"
+                        className="brand-logo brand-logo--square"
                     />
                     <span>VCursor</span>
                 </Link>

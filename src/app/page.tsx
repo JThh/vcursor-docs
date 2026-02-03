@@ -68,12 +68,13 @@ export default function Home() {
             <footer className="footer">
                 <div className="container footer-content">
                     <div className="footer-brand">
-                        <div className="flex items-center gap-2 mb-2">
+                        <div className="brand-mark footer-brand-mark">
                             <Image
                                 src="/logo-round.png"
                                 alt="VCursor Logo"
                                 width={24}
                                 height={24}
+                                className="brand-logo brand-logo--round"
                             />
                             <span className="brand-name">VCursor</span>
                         </div>
