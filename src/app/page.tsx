@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/Header';
+
 
 export default function Home() {
     return (
@@ -66,7 +68,15 @@ export default function Home() {
             <footer className="footer">
                 <div className="container footer-content">
                     <div className="footer-brand">
-                        <span className="brand-name">VCursor</span>
+                        <div className="flex items-center gap-2 mb-2">
+                            <Image
+                                src="/logo-round.png"
+                                alt="VCursor Logo"
+                                width={24}
+                                height={24}
+                            />
+                            <span className="brand-name">VCursor</span>
+                        </div>
                         <p>© {new Date().getFullYear()} VCursor. All rights reserved.</p>
                     </div>
                     <div className="footer-links">

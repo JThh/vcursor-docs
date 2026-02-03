@@ -4,6 +4,10 @@ import './globals.css'
 export const metadata: Metadata = {
     title: 'VCursor CLI Documentation',
     description: 'The official documentation for the VCursor CLI and SDKs.',
+    icons: {
+        icon: "/logo-round.png",
+        shortcut: "/logo-round.png",
+    },
 }
 
 export default function RootLayout({

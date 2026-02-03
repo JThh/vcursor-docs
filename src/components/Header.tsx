@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +46,14 @@ export default function Header() {
         <header className={`navbar ${scrolled ? 'glass shadow-sm' : 'bg-transparent'}`}>
             <div className="container navbar-content">
                 <Link href="/" className="logo text-gradient flex items-center gap-2">
-                    VCursor
+                    <Image
+                        src="/logo-submit-anything.png"
+                        alt="VCursor Logo"
+                        width={32}
+                        height={32}
+                        className="rounded-lg"
+                    />
+                    <span>VCursor</span>
                 </Link>
 
                 {/* Desktop Nav */}
