@@ -1,6 +1,6 @@
 # VCursor Documentation Site
 
-This is the source code for [cli.vcursor.com/docs](https://cli.vcursor.com/docs).
+This is the source code for [docs.vcursor.com](https://docs.vcursor.com).
 Built with Next.js 14, TypeScript, and custom styling (no Tailwind).
 
 ## Getting Started

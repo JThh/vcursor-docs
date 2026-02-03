@@ -1,19 +1,10 @@
 import Link from 'next/link';
+import Header from '@/components/Header';
 
 export default function Home() {
     return (
         <main className="main-layout">
-            <header className="navbar glass">
-                <div className="container navbar-content">
-                    <div className="logo text-gradient">VCursor CLI</div>
-                    <nav className="nav-links">
-                        <Link href="/docs/cli" className="nav-link">CLI</Link>
-                        <Link href="/docs/python" className="nav-link">Python</Link>
-                        <Link href="/docs/js" className="nav-link">Node.js</Link>
-                        <Link href="/docs/go" className="nav-link">Go</Link>
-                    </nav>
-                </div>
-            </header>
+            <Header />
 
             <section className="hero-section">
                 <div className="hero-bg-glow" />
@@ -30,13 +21,14 @@ export default function Home() {
 
                     <p className="hero-subtitle">
                         The ultimate command-line interface for generative video.
+                        Prompt, preview, and publish — all without leaving your terminal.
                     </p>
 
                     <div className="hero-actions">
                         <Link href="/docs/cli" className="btn btn-primary btn-lg">
                             Get Started
                         </Link>
-                        <Link href="https://github.com/wenextdev/nexty.dev" target="_blank" className="btn btn-outline btn-lg">
+                        <Link href="https://github.com/JThh/vcursor-docs" target="_blank" className="btn btn-outline btn-lg">
                             View on GitHub
                         </Link>
                     </div>
@@ -52,16 +44,17 @@ export default function Home() {
                         <div className="terminal-body">
                             <div className="cmd-line">
                                 <span className="prompt">$</span>
-                                <span className="cmd">vcursor "a futuristic city with flying cars"</span>
+                                <span className="cmd typing-cursor">vcursor "a futuristic city with flying cars"</span>
                             </div>
-                            <div className="output dim">Initializing generation...</div>
-                            <div className="output">Mode: <span className="blue">text2video</span></div>
-                            <div className="output">Task: <span className="purple">8f7a9d...</span></div>
-                            <div className="output flex-row">
+                            {/* Static output for now, could be animated later */}
+                            <div className="output dim" style={{ animation: 'fade-in 0.5s 1s ease-out forwards', opacity: 0 }}>Initializing generation...</div>
+                            <div className="output" style={{ animation: 'fade-in 0.5s 1.5s ease-out forwards', opacity: 0 }}>Mode: <span className="blue">text2video</span></div>
+                            <div className="output" style={{ animation: 'fade-in 0.5s 1.8s ease-out forwards', opacity: 0 }}>Task: <span className="purple">8f7a9d...</span></div>
+                            <div className="output flex-row" style={{ animation: 'fade-in 0.5s 2.5s ease-out forwards', opacity: 0 }}>
                                 <span className="green">[████████████████████]</span>
                                 <span>100% Completed</span>
                             </div>
-                            <div className="output flex-row">
+                            <div className="output flex-row" style={{ animation: 'fade-in 0.5s 3s ease-out forwards', opacity: 0 }}>
                                 <span className="dim">Video saved to</span>
                                 <span className="file-link">./output.mp4</span>
                             </div>
@@ -80,6 +73,7 @@ export default function Home() {
                         <Link href="#">Privacy</Link>
                         <Link href="#">Terms</Link>
                         <Link href="#">Twitter</Link>
+                        <Link href="/docs/cli">Docs</Link>
                     </div>
                 </div>
             </footer>
