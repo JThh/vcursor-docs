@@ -37,14 +37,14 @@ export default function CliDocs() {
                         <div className="feature-icon">T</div>
                         <h3 className="feature-title">Text to Video</h3>
                         <p className="feature-desc">Generate videos from detailed text descriptions.</p>
-                        <CodeBlock language="bash" code='vcursor "cinematic drone shot"' />
+                        <CodeBlock language="bash" code='vcursor "cinematic drone shot"' wrap={true} />
                     </div>
 
                     <div className="feature-card">
                         <div className="feature-icon">I</div>
                         <h3 className="feature-title">Image to Video</h3>
                         <p className="feature-desc">Bring static images to life with motion.</p>
-                        <CodeBlock language="bash" code='vcursor ./image.jpg "animate water"' />
+                        <CodeBlock language="bash" code='vcursor ./image.jpg "animate water"' wrap={true} />
                     </div>
 
                     <div className="feature-card" style={{ gridColumn: '1 / -1' }}>
@@ -60,40 +60,138 @@ export default function CliDocs() {
 
             <section className="doc-section">
                 <h2>Command Reference</h2>
-                <div style={{ overflowX: 'auto' }}>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Flag</th>
-                                <th>Description</th>
-                                <th>Example</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code style={{ fontSize: '0.85em' }}>--agent</code></td>
-                                <td>Use autonomous agent mode for complex tasks.</td>
-                                <td><span style={{ opacity: 0.7 }}>--agent "make a modal"</span></td>
-                            </tr>
-                            <tr>
-                                <td><code style={{ fontSize: '0.85em' }}>--mode &lt;name&gt;</code></td>
-                                <td>Force a specific generation mode.</td>
-                                <td><span style={{ opacity: 0.7 }}>--mode image2video</span></td>
-                            </tr>
-                            <tr>
-                                <td><code style={{ fontSize: '0.85em' }}>--plan</code></td>
-                                <td>Preview the execution plan without running it.</td>
-                                <td><span style={{ opacity: 0.7 }}>--plan "my prompt"</span></td>
-                            </tr>
-                            <tr>
-                                <td><code style={{ fontSize: '0.85em' }}>-o, --output</code></td>
-                                <td>Specify the output file path.</td>
-                                <td><span style={{ opacity: 0.7 }}>-o ./result.mp4</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <p className="mb-8 text-[hsl(var(--muted-foreground))]">
+                    Comprehensive guide to all available flags and options.
+                </p>
+
+                <div className="space-y-8">
+                    {/* Core & Workflow */}
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4 text-[hsl(var(--foreground))] border-b border-[hsl(var(--border))] pb-2">
+                            Core & Workflow
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <CommandCard
+                                flag="--agent"
+                                desc="Use autonomous agent mode for complex tasks like video editing."
+                                example='--agent "make a modal"'
+                            />
+                            <CommandCard
+                                flag="--plan"
+                                desc="Preview the execution plan without running it."
+                                example='--plan "my prompt"'
+                            />
+                            <CommandCard
+                                flag="--ask"
+                                desc="Chat with VCursor about technical questions or help."
+                                example='--ask "how do I animate?"'
+                            />
+                            <CommandCard
+                                flag="--mode <name>"
+                                desc="Force a specific generation mode (e.g., text2video, image2video)."
+                                example='--mode image2video'
+                            />
+                            <CommandCard
+                                flag="-o, --output"
+                                desc="Specify the output file path."
+                                example='-o ./result.mp4'
+                            />
+                            <CommandCard
+                                flag="--open"
+                                desc="Automatically open the file after generation."
+                                example='--open'
+                            />
+                            <CommandCard
+                                flag="--json"
+                                desc="Output results in JSON format for scripting."
+                                example='--json'
+                            />
+                        </div>
+                    </div>
+
+                    {/* Video Settings */}
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4 text-[hsl(var(--foreground))] border-b border-[hsl(var(--border))] pb-2">
+                            Video Settings
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <CommandCard
+                                flag="--duration"
+                                desc="Target duration for the video."
+                                example='--duration "5s"'
+                            />
+                            <CommandCard
+                                flag="--aspectRatio"
+                                desc="Video aspect ratio."
+                                example='--aspectRatio "16:9"'
+                            />
+                            <CommandCard
+                                flag="--resolution"
+                                desc="Output resolution."
+                                example='--resolution "1080p"'
+                            />
+                            <CommandCard
+                                flag="--model"
+                                desc="Specific AI model to use."
+                                example='--model "stable-video"'
+                            />
+                        </div>
+                    </div>
+
+                    {/* Audio & Style */}
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4 text-[hsl(var(--foreground))] border-b border-[hsl(var(--border))] pb-2">
+                            Audio & Style
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <CommandCard
+                                flag="--voiceover"
+                                desc="Add AI voiceover text."
+                                example='--voiceover "Hello world"'
+                            />
+                            <CommandCard
+                                flag="--subtitles"
+                                desc="Generate subtitles for the video."
+                                example='--subtitles'
+                            />
+                            <CommandCard
+                                flag="--bgm"
+                                desc="Add background music description."
+                                example='--bgm "upbeat lofi"'
+                            />
+                            <CommandCard
+                                flag="--soundEffects"
+                                desc="Add sound effects description."
+                                example='--soundEffects "explosions"'
+                            />
+                            <CommandCard
+                                flag="--visualStyle"
+                                desc="Define a specific visual style."
+                                example='--visualStyle "cyberpunk"'
+                            />
+                        </div>
+                    </div>
                 </div>
             </section>
+        </div>
+    );
+}
+
+function CommandCard({ flag, desc, example }: { flag: string, desc: string, example: string }) {
+    return (
+        <div className="p-4 rounded-lg bg-[hsl(var(--card))] border border-[hsl(var(--border))] hover:border-[hsl(var(--primary))] transition-colors duration-200">
+            <code className="text-sm font-bold text-[hsl(var(--primary))] bg-[hsla(var(--primary),0.1)] px-2 py-1 rounded">
+                {flag}
+            </code>
+            <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))] leading-relaxed">
+                {desc}
+            </p>
+            <div className="mt-3 pt-3 border-t border-[hsla(var(--border),0.5)]">
+                <span className="text-xs text-[hsl(var(--muted-foreground))] uppercase tracking-wider font-semibold">Ex:</span>
+                <code className="ml-2 text-xs text-[hsl(var(--foreground))] font-mono opacity-80">
+                    {example}
+                </code>
+            </div>
         </div>
     );
 }

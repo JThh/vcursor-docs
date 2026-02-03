@@ -70,9 +70,9 @@ export default function Home() {
                         <p>© {new Date().getFullYear()} VCursor. All rights reserved.</p>
                     </div>
                     <div className="footer-links">
-                        <Link href="#">Privacy</Link>
-                        <Link href="#">Terms</Link>
-                        <Link href="#">Twitter</Link>
+                        <Link href="/privacy">Privacy</Link>
+                        <Link href="/terms">Terms</Link>
+                        <Link href="https://discord.gg/Npf6PVsCYz" target="_blank">Discord</Link>
                         <Link href="/docs/cli">Docs</Link>
                     </div>
                 </div>

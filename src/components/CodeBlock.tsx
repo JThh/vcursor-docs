@@ -7,9 +7,10 @@ interface CodeBlockProps {
     language: string;
     code: string;
     filename?: string;
+    wrap?: boolean;
 }
 
-export const CodeBlock = ({ language, code, filename }: CodeBlockProps) => {
+export const CodeBlock = ({ language, code, filename, wrap = false }: CodeBlockProps) => {
     const [isCopied, setIsCopied] = useState(false);
 
     const copyToClipboard = async () => {
@@ -23,20 +24,20 @@ export const CodeBlock = ({ language, code, filename }: CodeBlockProps) => {
     };
 
     return (
-        <div className="code-block-wrapper rounded-xl overflow-hidden my-6 border border-[#30363d] shadow-lg bg-[#0d1117] relative group">
-            <div className="code-header flex justify-between items-center bg-[#161b22] px-4 py-2 border-b border-[#30363d] select-none">
+        <div className="code-block-wrapper rounded-xl overflow-hidden my-6 border border-[hsl(var(--border))] shadow-lg bg-[hsl(var(--card))] relative group transition-colors duration-200">
+            <div className="code-header flex justify-between items-center bg-[hsla(var(--muted),0.5)] px-4 py-2 border-b border-[hsl(var(--border))] select-none">
                 <div className="flex items-center gap-2">
                     {filename ? (
-                        <span className="text-sm text-[#8b949e] font-mono">{filename}</span>
+                        <span className="text-sm text-[hsl(var(--muted-foreground))] font-mono">{filename}</span>
                     ) : (
-                        <span className="text-xs text-[#8b949e] uppercase tracking-wider font-bold">
+                        <span className="text-xs text-[hsl(var(--muted-foreground))] uppercase tracking-wider font-bold">
                             {language}
                         </span>
                     )}
                 </div>
                 <button
                     onClick={copyToClipboard}
-                    className="text-xs transition-all duration-200 px-2 py-1.5 rounded-md flex items-center gap-1.5 text-[#8b949e] hover:text-white hover:bg-[#30363d]"
+                    className="text-xs transition-all duration-200 px-2 py-1.5 rounded-md flex items-center gap-1.5 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsla(var(--foreground),0.1)]"
                     aria-label="Copy code to clipboard"
                 >
                     {isCopied ? (
@@ -76,7 +77,7 @@ export const CodeBlock = ({ language, code, filename }: CodeBlockProps) => {
                     )}
                 </button>
             </div>
-            <div className="code-content relative group-hover:bg-[#0d1117] transition-colors">
+            <div className={`code-content relative transition-colors ${wrap ? '' : 'overflow-x-auto'}`}>
                 <Highlight
                     theme={themes.vsDark}
                     code={code.trim()}
@@ -84,8 +85,14 @@ export const CodeBlock = ({ language, code, filename }: CodeBlockProps) => {
                 >
                     {({ className, style, tokens, getLineProps, getTokenProps }) => (
                         <pre
-                            className={`${className} overflow-x-auto p-4 text-sm font-mono leading-relaxed scrollbar-thin scrollbar-thumb-[#30363d] scrollbar-track-transparent`}
-                            style={{ ...style, backgroundColor: "transparent", margin: 0 }}
+                            className={`${className} p-4 text-sm font-mono leading-relaxed scrollbar-thin scrollbar-thumb-[hsl(var(--border))] scrollbar-track-transparent`}
+                            style={{
+                                ...style,
+                                backgroundColor: "transparent",
+                                margin: 0,
+                                whiteSpace: wrap ? "pre-wrap" : "pre",
+                                wordBreak: wrap ? "break-word" : "normal"
+                            }}
                         >
                             {tokens.map((line, i) => (
                                 <div key={i} {...getLineProps({ line, key: i })}>
