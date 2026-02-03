@@ -1,3 +1,5 @@
+import { CodeBlock } from "@/components/CodeBlock";
+
 export default function CliDocs() {
     return (
         <div>
@@ -11,16 +13,8 @@ export default function CliDocs() {
 
             <section className="doc-section">
                 <h2>Installation</h2>
-                <div className="code-block-wrapper">
-                    <div className="code-header">
-                        <span className="code-lang">bash</span>
-                        <button className="copy-btn">Copy</button>
-                    </div>
-                    <pre className="code-content">
-                        <code className="language-bash">curl -fsSL https://cli.vcursor.com/install.sh | bash</code>
-                    </pre>
-                </div>
-                <p>
+                <CodeBlock language="bash" code="curl -fsSL https://cli.vcursor.com/install.sh | bash" />
+                <p className="mt-4">
                     The installer automatically detects your operating system (macOS, Linux, Windows w/ WSL) and installs necessary dependencies.
                 </p>
             </section>
@@ -28,12 +22,8 @@ export default function CliDocs() {
             <section className="doc-section">
                 <h2>Authentication</h2>
                 <p>Log in with your API key to access paid features and higher rate limits.</p>
-                <div className="code-block-wrapper">
-                    <div className="code-content">
-                        <code className="language-bash">$ vcursor login</code>
-                    </div>
-                </div>
-                <p className="text-sm text-secondary">
+                <CodeBlock language="bash" code="$ vcursor login" />
+                <p className="text-sm text-secondary mt-2">
                     <strong>Note:</strong> You can also set the <code>VCURSOR_API_KEY</code> environment variable for CI/CD environments.
                 </p>
             </section>
@@ -47,18 +37,14 @@ export default function CliDocs() {
                         <div className="feature-icon">T</div>
                         <h3 className="feature-title">Text to Video</h3>
                         <p className="feature-desc">Generate videos from detailed text descriptions.</p>
-                        <div style={{ marginTop: '1rem', padding: '0.5rem', background: 'hsla(var(--primary), 0.05)', borderRadius: '4px', fontSize: '0.8rem', fontFamily: 'monospace' }}>
-                            $ vcursor "cinematic drone shot"
-                        </div>
+                        <CodeBlock language="bash" code='$ vcursor "cinematic drone shot"' />
                     </div>
 
                     <div className="feature-card">
                         <div className="feature-icon">I</div>
                         <h3 className="feature-title">Image to Video</h3>
                         <p className="feature-desc">Bring static images to life with motion.</p>
-                        <div style={{ marginTop: '1rem', padding: '0.5rem', background: 'hsla(var(--primary), 0.05)', borderRadius: '4px', fontSize: '0.8rem', fontFamily: 'monospace' }}>
-                            $ vcursor ./image.jpg "animate water"
-                        </div>
+                        <CodeBlock language="bash" code='$ vcursor ./image.jpg "animate water"' />
                     </div>
 
                     <div className="feature-card" style={{ gridColumn: '1 / -1' }}>
@@ -67,9 +53,7 @@ export default function CliDocs() {
                         <p className="feature-desc">
                             Use "Agent Mode" for complex, multi-step tasks. The agent will plan, generate assets (images, audio), and edit them together into a final video.
                         </p>
-                        <div style={{ marginTop: '1rem', padding: '0.5rem', background: 'hsla(var(--primary), 0.05)', borderRadius: '4px', fontSize: '0.8rem', fontFamily: 'monospace' }}>
-                            $ vcursor --agent "create a 30s coffee commercial"
-                        </div>
+                        <CodeBlock language="bash" code='$ vcursor --agent "create a 30s coffee commercial"' />
                     </div>
                 </div>
             </section>
