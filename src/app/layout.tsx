@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
     title: 'VCursor CLI Documentation',
     description: 'The official documentation for the VCursor CLI and SDKs.',
